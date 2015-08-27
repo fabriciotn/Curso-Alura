@@ -1,0 +1,18 @@
+body {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 14px;
+}
+
+h1{
+	color: #006699;
+	font-size: 18px;
+}
+
+ul {
+	list-style-type: square;
+}
+
+input {
+	background-color: #E6E6FA;
+	border: solid 1px #000000;
+}

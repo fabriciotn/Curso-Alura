@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Treinamento</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandButton value="Converter" action="#{conversorMonetarioBean.converte}"/>
+		
+		<h:inputText value="#{conversorMonetarioBean.valor}"/>
+		
+		<h:outputLabel value="de " for="de"/>
+		
+		<h:selectOneMenu value="#{conversorMonetarioBean.de}" id="de">
+			<f:selectItems 
+				value="#{conversorMonetarioBean.taxas.keySet()}"
+				var="moeda"
+				itemValue="#{moeda}"
+				itemLabel="#{moeda}"/>
+		</h:selectOneMenu>
+
+		<h:outputLabel value="para " for="para"/>
+		
+		<h:selectOneMenu value="#{conversorMonetarioBean.para}" id="para">
+			<f:selectItems 
+				value="#{conversorMonetarioBean.taxas.keySet()}"
+				var="moeda" 
+				itemValue="#{moeda}"
+				itemLabel="#{moeda}"/>
+		</h:selectOneMenu>
+	</h:form>
+	
+	<h:outputFormat value="{0} em {1} equivale a {2} em {3}" rendered="#{conversorMonetarioBean.resultado != null}">
+		<f:param value="#{conversorMonetarioBean.valor}"/>
+		<f:param value="#{conversorMonetarioBean.de}"/>
+		<f:param value="#{conversorMonetarioBean.resultado}"/>
+		<f:param value="#{conversorMonetarioBean.para}"/>
+	</h:outputFormat>
+</h:body>
+</html>
