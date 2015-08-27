@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="agenda" default="compilar">
+
+	<target name="limpar">
+		<delete dir="build" />
+		<mkdir  dir="build" />
+		<mkdir  dir="build/classes" />
+		<mkdir  dir="build/classes-teste" />
+	</target>
+
+	<target name="compilar" depends="limpar">
+		<javac destdir="build/classes" srcdir="src">
+			<classpath>
+				<fileset dir="WebContent/WEB-INF/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="compilar-teste" depends="compilar">
+		<javac destdir="build/classes-teste" srcdir="src-teste">
+			<classpath>
+
+				<pathelement path="build/classes"/>
+
+				<fileset dir="lib-teste">
+					<include name="*.jar" />
+				</fileset>
+
+				<fileset dir="WebContent/WEB-INF/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="executar-teste" depends="compilar-teste">
+		<junit showoutput="true" printsummary="true">
+			<batchtest>
+				<formatter type="plain"/>
+				
+				<fileset dir="src-teste">
+					<include name="**/*Teste.java" />
+				</fileset>
+			</batchtest>
+
+			<classpath>
+				<pathelement path="build/classes-teste"/>
+				<pathelement path="build/classes"/>
+				
+				<fileset dir="lib-teste">
+					<include name="*.jar" />
+				</fileset>
+
+				<fileset dir="WebContent/WEB-INF/lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</junit>
+	</target>
+
+</project>

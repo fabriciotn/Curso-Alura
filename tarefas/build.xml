@@ -1,0 +1,38 @@
+<project name="agenda" default="compilar-teste">
+	<target name="limpar">
+		<delete dir="build" />
+		<mkdir dir="build" />
+		<delete dir="build/classes" />
+		<mkdir dir="build/classes" />
+		<delete dir="build/classes-teste" />
+		<mkdir dir="build/classes-teste" />
+	</target>
+
+	<path id="classpath-compilacao">
+	    <fileset dir="libs">
+	            <include name="*.jar" />
+	    </fileset>
+	</path>
+
+	<path id="classpath-compilacao-teste">
+	    <path refid="classpath-compilacao" />
+
+	    <fileset dir="libs-teste">
+	            <include name="*.jar" />
+	    </fileset>
+
+	    <pathelement path="build/classes" />
+	</path>
+
+	<target name="compilar" depends="limpar">
+	    <javac destdir="build/classes" srcdir="src">
+	        <classpath refid="classpath-compilar" />
+	    </javac>
+	</target>
+
+	<target name="compilar-teste" depends="compilar">
+	    <javac destdir="build/classes-teste" srcdir="src-teste" >
+	        <classpath refid="classpath-compilar-teste" />
+	    </javac>
+	</target>
+</project>

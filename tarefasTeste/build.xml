@@ -1,0 +1,13 @@
+<project name="agenda" default="main">
+
+    <path id="lib.path">
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
+
+    <taskdef name="mensagem" classname="br.com.caelum.tarefas" classpathref="lib.path" />
+
+    <target name="main">
+        <log level="info" msg="Hello ANT Task" />
+    </target>
+
+</project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://fabriciotn.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://fabriciotn.com.br" xmlns:intf="http://fabriciotn.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://fabriciotn.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="calc">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calcResponse">
+    <complexType>
+     <sequence>
+      <element name="calcReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="calcResponse">
+
+      <wsdl:part element="impl:calcResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calcRequest">
+
+      <wsdl:part element="impl:calc" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Calculadora">
+
+      <wsdl:operation name="calc">
+
+         <wsdl:input message="impl:calcRequest" name="calcRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calcResponse" name="calcResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculadoraSoapBinding" type="impl:Calculadora">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="calc">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calcRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calcResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculadoraService">
+
+      <wsdl:port binding="impl:CalculadoraSoapBinding" name="Calculadora">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceTest/services/Calculadora"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

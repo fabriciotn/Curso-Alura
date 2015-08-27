@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module>
+
+	<info organization="br.com.caelum" module="agenda" />
+
+	<configurations>
+		<conf name="runtime" />
+	</configurations>
+
+	<dependencies>
+		<dependency org="org.hibernate" name="hibernate-core" rev="3.3.2.GA"
+			conf="runtime->master, sources" />
+	</dependencies>
+
+	<conflicts>
+		
+	</conflicts>
+
+</ivy-module>

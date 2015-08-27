@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CalculadoraService WSDL service -->
+
+  <service name="Calculadora" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://fabriciotn.com.br"/>
+      <parameter name="wsdlServiceElement" value="CalculadoraService"/>
+      <parameter name="schemaQualified" value="http://fabriciotn.com.br"/>
+      <parameter name="wsdlServicePort" value="Calculadora"/>
+      <parameter name="className" value="br.com.fabriciotn.CalculadoraSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Calculadora"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="calc" qname="operNS:calc" xmlns:operNS="http://fabriciotn.com.br" returnQName="retNS:calcReturn" xmlns:retNS="http://fabriciotn.com.br" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:a" xmlns:pns="http://fabriciotn.com.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:b" xmlns:pns="http://fabriciotn.com.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="calc"/>
+
+  </service>
+</deployment>
