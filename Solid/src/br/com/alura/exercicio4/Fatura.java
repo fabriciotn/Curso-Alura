@@ -33,7 +33,21 @@ public class Fatura {
         return pago;
     }
 
-    public void setPago(boolean pago) {
-        this.pago = pago;
-    }
+	public void adicionaPagamento(Pagamento pagamento) {
+		this.pagamentos.add(pagamento);
+		
+		if(valorTotalDosPagamentos()>this.valor)  {
+			this.pago = true;
+	    }
+	}
+
+	private double valorTotalDosPagamentos() {
+		double valor = 0;
+		
+		for (Pagamento pagamento : pagamentos) {
+			valor += pagamento.getValor();
+		}
+		
+		return valor;
+	}
 }
