@@ -1,11 +1,16 @@
 package br.com.alura.exercicio5;
 
-public class ContaDeEstudante extends ContaComum {
+public class ContaDeEstudante {
 
+	private ManipuladorDeSaldo manipulador;
     private int milhas;
 
+    public ContaDeEstudante() {
+    	this.manipulador = new ManipuladorDeSaldo();
+	}
+    
     public void deposita(double valor) {
-        super.deposita(valor);
+    	manipulador.deposita(valor);
         this.milhas += (int)valor;
     }
 
