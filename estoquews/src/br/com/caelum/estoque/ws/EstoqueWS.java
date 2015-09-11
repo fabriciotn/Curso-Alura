@@ -12,6 +12,8 @@ import br.com.caelum.estoque.modelo.item.Filtros;
 import br.com.caelum.estoque.modelo.item.Item;
 import br.com.caelum.estoque.modelo.item.ItemDao;
 import br.com.caelum.estoque.modelo.item.ListaItens;
+import br.com.caelum.estoque.modelo.usuario.TokenUsuario;
+import br.com.caelum.estoque.modelo.usuario.Usuario;
 
 @WebService
 public class EstoqueWS {
@@ -26,5 +28,14 @@ public class EstoqueWS {
 		List<Filtro> listaFiltros = filtros.getLista();
 		List<Item> lista = dao.todosItens(listaFiltros);
 		return new ListaItens(lista);
+	}
+	
+	@WebMethod(operationName="CadastrarItem")
+	@WebResult(name="item")
+	public Item cadastrarItem(@WebParam(name="tokenUsuario", header=true) TokenUsuario token, @WebParam(name="item") Item item){
+		System.out.println("Cadastrando item " + item.getNome());
+		
+		this.dao.cadastrar(item);
+		return item;
 	}
 }
