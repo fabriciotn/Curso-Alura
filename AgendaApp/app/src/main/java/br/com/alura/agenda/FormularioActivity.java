@@ -1,5 +1,6 @@
 package br.com.alura.agenda;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,13 +39,13 @@ public class FormularioActivity extends AppCompatActivity {
             helper.preencheFormulario(aluno);
         }
 
-        ImageView foto = helper.getBotaoImagem();
+        ImageView foto = helper.getCaminhoFoto();
 
         foto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 localArquivoFoto = getExternalFilesDir(null) +
-                        "/"+ System.currentTimeMillis()+".jpg";
+                        "/"+ System.currentTimeMillis()+".png";
 
                 File arquivo = new File(localArquivoFoto);
                 Uri localFoto = Uri.fromFile(arquivo);
@@ -57,6 +58,17 @@ public class FormularioActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == TIRA_FOTO){
+            if(resultCode == Activity.RESULT_OK){
+                helper.carregaImagem(localArquivoFoto);
+            }else{
+                localArquivoFoto = null;
+            }
+        }
     }
 
     @Override

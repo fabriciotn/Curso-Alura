@@ -1,6 +1,7 @@
 package br.com.alura.agenda;
 
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -17,7 +18,7 @@ public class FormularioHelper {
     private final EditText campoTelefone;
     private final EditText campoSite;
     private final RatingBar campoNota;
-    private final ImageView foto;
+    private final ImageView caminhoFoto;
     private Aluno aluno;
 
     public FormularioHelper(FormularioActivity activity) {
@@ -26,7 +27,7 @@ public class FormularioHelper {
         campoTelefone = (EditText) activity.findViewById(R.id.formulario_telefone);
         campoSite = (EditText) activity.findViewById(R.id.formulario_site);
         campoNota = (RatingBar) activity.findViewById(R.id.formulario_nota);
-        foto = (ImageView) activity.findViewById(R.id.formulario_foto);
+        caminhoFoto = (ImageView) activity.findViewById(R.id.formulario_foto);
         aluno = new Aluno();
     }
 
@@ -46,9 +47,20 @@ public class FormularioHelper {
         campoTelefone.setText(aluno.getTelefone());
         campoSite.setText(aluno.getSite());
         campoNota.setProgress(aluno.getNota().intValue());
+        if(aluno.getCaminhoFoto() != null){
+            carregaImagem(aluno.getCaminhoFoto());
+        }
     }
 
-    public ImageView getFoto() {
-        return foto;
+    public ImageView getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void carregaImagem(String localArquivoFoto) {
+        aluno.setCaminhoFoto(localArquivoFoto);
+
+        Bitmap imagem = BitmapFactory.decodeFile(localArquivoFoto);
+        Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 100, 100, true);
+        caminhoFoto.setImageBitmap(imagemReduzida);
     }
 }
