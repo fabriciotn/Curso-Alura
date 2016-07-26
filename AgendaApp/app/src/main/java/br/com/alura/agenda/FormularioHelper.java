@@ -60,7 +60,8 @@ public class FormularioHelper {
         aluno.setCaminhoFoto(localArquivoFoto);
 
         Bitmap imagem = BitmapFactory.decodeFile(localArquivoFoto);
-        Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 100, 100, true);
+        Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 300, 300, true);
+        caminhoFoto.setScaleType(ImageView.ScaleType.FIT_XY);
         caminhoFoto.setImageBitmap(imagemReduzida);
     }
 }

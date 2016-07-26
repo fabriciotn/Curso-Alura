@@ -39,9 +39,9 @@ public class FormularioActivity extends AppCompatActivity {
             helper.preencheFormulario(aluno);
         }
 
-        ImageView foto = helper.getCaminhoFoto();
+        Button botao_foto = (Button) findViewById(R.id.formulario_botao_foto);
 
-        foto.setOnClickListener(new View.OnClickListener() {
+        botao_foto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 localArquivoFoto = getExternalFilesDir(null) +

@@ -3,19 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/linha_impar">
 
     <ImageView
-        android:id="@+id/foto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:id="@+id/item_foto"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_no_image"
         android:background="@color/borda_imagem"/>
 
-    <TextView
-        android:id="@+id/nome"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
+        <TextView
+            android:id="@+id/item_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/item_telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"/>
+
+    </LinearLayout>
 </LinearLayout>

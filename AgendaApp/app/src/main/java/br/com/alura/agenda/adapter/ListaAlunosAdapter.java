@@ -47,8 +47,11 @@ public class ListaAlunosAdapter extends BaseAdapter {
         View view = activity.getLayoutInflater().inflate(R.layout.item, null);
         Aluno aluno = alunos.get(position);
 
-        TextView nome = (TextView) view.findViewById(R.id.nome);
+        TextView nome = (TextView) view.findViewById(R.id.item_nome);
         nome.setText(aluno.getNome());
+
+        TextView telefone = (TextView) view.findViewById(R.id.item_telefone);
+        telefone.setText(aluno.getTelefone());
 
         Bitmap bm;
         if(aluno.getCaminhoFoto() != null){
@@ -58,7 +61,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
         }
 
         bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
-        ImageView foto = (ImageView) view.findViewById(R.id.foto);
+        ImageView foto = (ImageView) view.findViewById(R.id.item_foto);
         foto.setImageBitmap(bm);
 
         if(position % 2 == 0){

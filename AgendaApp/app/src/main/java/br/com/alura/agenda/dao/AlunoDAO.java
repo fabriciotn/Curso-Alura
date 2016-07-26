@@ -30,9 +30,13 @@ public class AlunoDAO extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS Alunos";
+        String sql = "";
+        switch (oldVersion){
+            case 1:
+                sql = "ALTER TABLE Alunos ADD COLUMN caminhoFoto TEXT";
+
+        }
         db.execSQL(sql);
-        onCreate(db);
     }
 
     public void insere(Aluno aluno) {

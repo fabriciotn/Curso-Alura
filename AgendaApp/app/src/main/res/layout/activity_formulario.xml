@@ -11,13 +11,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="177dp">
+            android:layout_height="225dp">
 
             <ImageView
                 android:id="@+id/formulario_foto"
                 android:src="@drawable/ic_no_image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:background="@color/borda_imagem"/>
             
