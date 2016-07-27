@@ -23,10 +23,18 @@ import br.com.alura.agenda.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
+    public static final int CALL_PHONE = 123;
+    public static final int RECEIVE_SMS = 135;
     private ListView listaAlunos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
+                != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(ListaAlunosActivity.this,
+                    new String[]{Manifest.permission.RECEIVE_SMS}, RECEIVE_SMS);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
@@ -81,7 +89,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 if(ActivityCompat.checkSelfPermission(ListaAlunosActivity.this, Manifest.permission.CALL_PHONE)
                         != PackageManager.PERMISSION_GRANTED){
                     ActivityCompat.requestPermissions(ListaAlunosActivity.this,
-                            new String[]{Manifest.permission.CALL_PHONE}, 123);
+                            new String[]{Manifest.permission.CALL_PHONE}, CALL_PHONE);
                 }else{
                     Intent intentLigar = new Intent(Intent.ACTION_CALL);
                     Uri uriTelefone = Uri.parse("tel:" + aluno.getTelefone());

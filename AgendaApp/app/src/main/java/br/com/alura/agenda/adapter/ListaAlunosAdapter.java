@@ -44,7 +44,11 @@ public class ListaAlunosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = activity.getLayoutInflater().inflate(R.layout.item, null);
+        View view = convertView;
+        if(view == null){
+            view = activity.getLayoutInflater().inflate(R.layout.item, null);
+        }
+
         Aluno aluno = alunos.get(position);
 
         TextView nome = (TextView) view.findViewById(R.id.item_nome);
