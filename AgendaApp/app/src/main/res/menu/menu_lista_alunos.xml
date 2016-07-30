@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.alura.agenda.FormularioActivity">
+    tools:context="br.com.alura.agenda.ListaAlunosActivity">
 
     <item
-        android:id="@+id/menu_formulario_ok"
-        android:title="OK"
-        android:icon="@drawable/ic_confirmar"
-        app:showAsAction="always"/>
+        android:id="@+id/menu_enviar_notas"
+        android:title="Enviar notas"
+        android:icon="@drawable/ic_enviar"
+        app:showAsAction="always" />
 
 </menu>
